@@ -1,0 +1,39 @@
+<!-- FULL HTML STARTS HERE -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shuffle App</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/color-thief/2.3.2/color-thief.umd.js"></script>
+  <style>
+    body { margin: 0; height: 100vh; font-family: Arial, sans-serif; background: linear-gradient(-45deg, #f5f2e9, #e0e0ff, #f5f2e9); background-size: 400% 400%; animation: backgroundAnimation 20s ease infinite; }
+    @keyframes backgroundAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .hidden { display: none !important; }
+    .splash-screen { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: #f5f2e9; z-index: 1000; display: flex; justify-content: center; align-items: center; flex-direction: column; }
+    .splash-screen img { width: 220px; height: 220px; object-fit: cover; border-radius: 50%; margin-bottom: 20px; }
+    .logo-overlay { font-size: 2.5em; font-weight: bold; color: #333; }
+    .shuffle-button { border: none; border-radius: 50%; width: 220px; height: 220px; cursor: pointer; background-image: url("https://i.imgur.com/l1YwrjK.jpeg"); background-size: cover; background-position: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  </style>
+</head>
+<body>
+  <div class="splash-screen" id="splash">
+    <img src="https://i.imgur.com/2R2GeWL.gif" alt="splash gif">
+    <div class="logo-overlay">SHUFFLE</div>
+  </div>
+  <button class="shuffle-button hidden" id="shuffleBtn"></button>
+  <script>
+    window.addEventListener('load', () => {
+      const splash = document.getElementById('splash');
+      const shuffleBtn = document.getElementById('shuffleBtn');
+      splash.style.transition = 'opacity 1s ease';
+      setTimeout(() => {
+        splash.style.opacity = 0.01;
+        setTimeout(() => {
+          splash.classList.add('hidden');
+          shuffleBtn.classList.remove('hidden');
+        }, 1000);
+      }, 3000);
+    });
+  </script>
+</body>
+</html>
